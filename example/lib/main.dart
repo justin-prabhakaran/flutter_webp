@@ -3,10 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_webp/flutter_webp.dart';
 
 void main() async {
-  print("hello world");
-  final webp = FlutterWebp();
-  webp.hello();
-
   runApp(MyApp());
 }
 
@@ -24,15 +20,11 @@ class _MyAppState extends State<MyApp> {
       //testing
       final webp = FlutterWebp();
 
-      final data = await rootBundle.load("assets/test.jpg");
+      final data = await rootBundle.load("assets/test.webp");
 
-      final bytes = data.buffer.asUint8List();
-
-      final res = webp.getInfo(bytes);
-      if (res.ok) {
-        print(res.width);
-        print(res.height);
-      }
+      webp.encodeImage(data.buffer.asUint8List());
+      webp.encodeImage(data.buffer.asUint8List());
+      webp.encodeImage(data.buffer.asUint8List());
     }();
     super.initState();
   }
